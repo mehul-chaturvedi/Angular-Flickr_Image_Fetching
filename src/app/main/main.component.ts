@@ -15,8 +15,25 @@ export class MainComponent implements OnInit {
     private snackBar: MatSnackBar) { }
 images;
 p=1;
+ratings;
   ngOnInit() {
     this.getImages();
+    setTimeout(()=>{
+    this.getRating();
+  }, 2000)
+    
+  }
+
+  getRating(){
+      this.flickerService.ratingServicee.subscribe(res=>{
+        if(res){
+          this.images = res;
+        console.log(this.images, 'main res')
+          
+        }else{
+          return;
+        }
+      })
   }
 
   getImages(){
@@ -26,18 +43,22 @@ p=1;
           duration: 2000,
         });
         this.images = res
+            this.images.photos.photo.forEach(ele=>{
+              ele.ratings = [];
+            })
+            console.log(this.images, 'ele')
+        
       }else{
         this.snackBar.open('Fetching Images Failed','', {
           duration: 2000,
         });
       }
-      console.log(res['stat'], 'res')
     })
   }
 
   clicked(image){
     this.route.navigate(['/rating', image.id])
-    this.flickerService.currentImg(image);
+    this.flickerService.currentImg(this.images, image);
   }
 
 }

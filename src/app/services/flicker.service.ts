@@ -11,6 +11,8 @@ export class FlickerService {
 key='daeeffc1a8aa8f65bd20c903b3b85172';
 private imagesource = new BehaviorSubject('Nothing');
 currentImage = this.imagesource.asObservable();
+private ratingSource = new BehaviorSubject(null);
+ratingServicee = this.ratingSource.asObservable();
   getPhotos(){
     const url = `https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=${this
       .key}&tags=food&per_page=48&format=json&nojsoncallback=1`;
@@ -18,7 +20,15 @@ currentImage = this.imagesource.asObservable();
      return this.http.get(url);
   }
 
-  currentImg(image){
-    this.imagesource.next(image);
+  currentImg(images, image){
+    var imagesz: any={
+      images: images,
+      image: image
+    }
+    this.imagesource.next(imagesz);
+  }
+
+  ratingService(images){
+    this.ratingSource.next(images)
   }
   }

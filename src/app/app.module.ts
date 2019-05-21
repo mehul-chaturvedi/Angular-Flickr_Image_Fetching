@@ -9,8 +9,17 @@ import { FlickerService } from './services/flicker.service';
 import { HeaderComponent } from './header/header.component';
 import { UserReviewComponent } from './user-review/user-review.component';
 import { MainComponent } from './main/main.component';
-import {MatToolbarModule, MatCardModule, MatGridListModule, MatTooltipModule, MatSnackBarModule} from '@angular/material';
+import {MatToolbarModule, 
+  MatCardModule, 
+  MatGridListModule, 
+  MatTooltipModule, 
+  MatSnackBarModule, 
+  MatInputModule, 
+  MatSelectModule,
+  MatButtonModule,
+  MatDividerModule} from '@angular/material';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +38,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatGridListModule,
     MatTooltipModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    FormsModule,
+    MatDividerModule
   ],
   providers: [FlickerService],
   bootstrap: [AppComponent]

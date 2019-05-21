@@ -1,7 +1,34 @@
-
-<mat-card>
-    <img  height="300px" width="300px" src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}.jpg">
-    <mat-card-actions>
-        <span>Title: {{image.title}}</span>
-      </mat-card-actions>
-</mat-card>
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <mat-card>
+      <img  height="300px" width="300px" src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}.jpg">
+      <mat-card-actions>
+          <span>Title: {{image.title}}</span>
+        </mat-card-actions>
+  </mat-card>
+  </mat-grid-tile>
+  <mat-divider [vertical]="true"></mat-divider>
+  <mat-grid-tile>
+    <form #ratingForm="ngForm">
+      <mat-form-field>
+        <mat-label>Rating</mat-label>
+        <mat-select #rating="ngModel" name="userRatings" ngModel >
+          <mat-option *ngFor="let num of numbers; let i = index;" [value]="num+1" >
+            {{num+1}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field >
+        <input matInput placeholder="Your Name" name="userName" value="" #name="ngModel" ngModel required>
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+        <input matInput placeholder="Reason For The Rating" name="userReason" value="" #reason="ngModel" ngModel>
+      </mat-form-field>
+      <br/>
+      <button style="background: grey;" mat-button (click)="formSubmit(ratingForm)">Submit Info</button>
+    </form>
+    
+  </mat-grid-tile>
+</mat-grid-list>
