@@ -1,0 +1,17 @@
+<mat-grid-list *ngIf="images" cols="3" >
+    <mat-grid-tile 
+    *ngFor="let image of images.photos.photo | paginate: { itemsPerPage: 10, currentPage: p }">
+    <div >
+        <mat-card (click)="clicked(image)">
+          <img matTooltip="Click Image to go to Rating Page" height="200px" width="200px" src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}.jpg">
+          <mat-card-actions>
+              <span>Ratings: {{rating}}</span>
+            </mat-card-actions>
+        </mat-card>
+        </div>
+  </mat-grid-tile>
+    
+  </mat-grid-list>
+
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
