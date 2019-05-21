@@ -34,10 +34,8 @@ numbers;
     this.images.photos.photo.forEach(ele=>{
       if(ele.id === rating['imageId']){
         ele['ratings'].push(rating);
-        console.log(ele, 'ele')
       }
     })
-    console.log(rating, 'ra')
     this.flickerService.ratingService(this.images);
     this.router.navigate(['/main']);
   }

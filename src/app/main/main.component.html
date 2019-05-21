@@ -5,8 +5,8 @@
         <mat-card (click)="clicked(image)">
           <img matTooltip="Click Image to go to Rating Page" height="200px" width="200px" src="https://farm{{image.farm}}.staticflickr.com/{{image.server}}/{{image.id}}_{{image.secret}}.jpg">
           <mat-card-actions>
-              <span>Ratings: <span *ngIf="image.ratings"><span *ngFor="let rating of image.ratings">{{(rating.rating)?rating.rating:'Not Available'}}</span></span>
-            </span>
+              <span>Ratings: {{(image.totalRating)?image.totalRating:'Not Available'}}</span>
+            
 
             </mat-card-actions>
         </mat-card>

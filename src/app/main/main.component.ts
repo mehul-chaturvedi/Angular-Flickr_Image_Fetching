@@ -25,11 +25,24 @@ ratings;
   }
 
   getRating(){
+    var totalRating =0;
       this.flickerService.ratingServicee.subscribe(res=>{
         if(res){
           this.images = res;
-        console.log(this.images, 'main res')
-          
+          this.images.photos.photo.forEach(ele=>{
+            if(ele.ratings.length){
+              console.log(ele, 'ele0')
+              ele.ratings.forEach(ele1=>{
+                console.log(totalRating, 'totRR')
+                totalRating = ele1.rating + totalRating;
+                console.log(ele1.rating, 'tot')
+              })
+              ele.totalRating = totalRating/ele.ratings.length;
+              console.log(ele.totalRating, 'totEE')
+
+            }
+          })
+          console.log(this.images, 'images')          
         }else{
           return;
         }
